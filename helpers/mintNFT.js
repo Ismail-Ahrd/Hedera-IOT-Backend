@@ -6,7 +6,7 @@ module.exports = mintNFT = async (tokenId) => {
 
   const tokenMintTx = new TokenMintTransaction()
     .setTokenId(tokenId)
-    .setMetadata([Buffer.from("somthing")])
+    .setMetadata([Buffer.from("something")])
     .freezeWith(client);
   const tokenMintSubmit = await tokenMintTx.execute(client);
   const tokenMintReceipt = await tokenMintSubmit.getReceipt(client);

@@ -8,6 +8,8 @@ const connectToDB = require("./db");
 const Device = require("./models/device");
 const { default: mongoose } = require("mongoose");
 const devicesRoute = require("./routes/devices");
+const accountsRoute = require("./routes/accounts");
+
 const app = express();
 const port = process.env.SERVER_PORT;
 
@@ -19,21 +21,7 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/devices", devicesRoute);
-app.post("/nft", async (req, res) => {
-  const data = req.body;
-  const tokenId = process.env.NFT_COLLECTION_ID;
-  const serial = await mintNFT(tokenId);
-
-  const device = new Device({
-    tokenId,
-    serial,
-    ...data,
-  });
-  await device.save();
-
-  res.status(200).json(device);
-});
-
+app.use("/accounts", accountsRoute);
 app.get("/", (req, res) => {
   res.send("app v1");
 });
