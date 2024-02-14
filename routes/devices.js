@@ -3,6 +3,7 @@ const deviceController = require("../controllers/deviceController");
 const router = express.Router();
 
 router.get("/", deviceController.getDevices);
+// router.get("/test", deviceController.getDevicesByAccountId);
 
 // router.get("/:postId", postController.getPostImages);
 
