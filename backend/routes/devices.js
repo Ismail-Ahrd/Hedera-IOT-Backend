@@ -4,8 +4,7 @@ const router = express.Router();
 
 router.get("/", deviceController.getDevices);
 router.get("/balance", deviceController.getDevicesByAccountId);
-router.post("/", deviceController.getDevices);
-
+router.post("/", deviceController.addDevice);
 
 // router.get("/:postId", postController.getPostImages);
 

@@ -1,5 +1,5 @@
 const Device = require("../models/device");
-
+const mintNFT = require("../helpers/mintNFT");
 const AccountNFTs = require("../helpers/accountNFTs");
 const getDevices = async (req, res) => {
   try {

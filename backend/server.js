@@ -1,11 +1,8 @@
 const express = require("express");
-const createNft = require("./helpers/mintNFT");
-const mintNFT = require("./helpers/mintNFT");
 require("dotenv").config();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const connectToDB = require("./db");
-const Device = require("./models/device");
 const { default: mongoose } = require("mongoose");
 const devicesRoute = require("./routes/devices");
 const accountsRoute = require("./routes/accounts");
@@ -30,4 +27,9 @@ mongoose.connection.once("open", () => {
   app.listen(port, () => {
     console.log(`Server is listening at http://localhost:${port}`);
   });
+});
+
+mongoose.connection.on("error", (err) => {
+  console.error("Error connecting to MongoDB:", err.message);
+  process.exit(1);
 });
